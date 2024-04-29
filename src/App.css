@@ -1,0 +1,10 @@
+main {
+  text-align: center;
+}
+.App {
+  height: 100vh;
+}
+.card-selected {
+  border: 1px solid rebeccapurple;
+  box-shadow: 1px 5px 10px rebeccapurple;
+}
