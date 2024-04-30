@@ -95,7 +95,11 @@ class AddComments extends Component {
             <option value="4">4</option>
             <option value="5">5</option>
           </Form.Select>
-          <Button type="submit" variant="success">
+          <Button
+            type="submit"
+            variant="success"
+            className="my-3"
+          >
             Invia il commento
           </Button>
         </Form>
