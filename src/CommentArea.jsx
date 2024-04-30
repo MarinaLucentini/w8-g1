@@ -1,10 +1,14 @@
 import { Component } from "react";
 import AddComments from "./AddComments";
 import CommentList from "./CommentList";
+import Error from "./Error";
+import Loading from "./Loading";
 
 class CommentArea extends Component {
   state = {
     commenti: [],
+    isLoading: true,
+    isError: false,
   };
   fetchComment = () => {
     fetch(
@@ -28,11 +32,16 @@ class CommentArea extends Component {
         }
       })
       .then((commenti) => {
-        this.setState({ commenti });
-        console.log(commenti);
+        this.setState({
+          commenti,
+          isLoading: false,
+          isError: false,
+        });
+        console.log(this.state.commenti);
       })
       .catch((err) => {
         console.log(err);
+        this.setState({ isError: true, isLoading: false });
       });
   };
   componentDidMount = () => {
@@ -48,12 +57,13 @@ class CommentArea extends Component {
   render() {
     return (
       <>
-        {this.props.isSelected && (
-          <>
-            <AddComments elementId={this.props.elementId} />
-            <CommentList commenti={this.state.commenti} />
-          </>
-        )}
+        {this.state.isError && <Error />}
+        {this.state.isLoading && <Loading />}
+
+        <>
+          <AddComments elementId={this.props.elementId} />
+          <CommentList commenti={this.state.commenti} />
+        </>
       </>
     );
   }

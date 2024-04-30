@@ -113,7 +113,7 @@ class MyBookList extends Component {
           </Row>
         </Container>
         <Container>
-          <Row xs={1} md={3} lg={5} className="gy-5">
+          <Row xs={1} md={3} className="gy-5">
             {filteredBooks.map((book) => {
               return (
                 <Col key={`book-${book.asin}`}>
@@ -123,6 +123,8 @@ class MyBookList extends Component {
                     category={book.category}
                     price={book.price}
                     asin={book.asin}
+                    elementIdNew={this.props.elementIdNew}
+                    elementId={this.props.elementId}
                   />
                 </Col>
               );
